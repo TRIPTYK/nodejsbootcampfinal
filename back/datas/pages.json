@@ -1,0 +1,23 @@
+{
+  "version": 0.1,
+  "pages": [{
+    "url": "/recipes",
+    "css": [{
+      "link": "/path"
+    }],
+    "js": [{
+      "link": "/path"
+    }]
+  }, {
+    "url": "/restaurants",
+    "css": [{
+      "link": "/css/style.css"
+    },{
+      "link": "/css/style2.css"
+    }],
+    "js": [{
+      "link": "/path"
+    }],
+    "template": "template1"
+  }]
+}

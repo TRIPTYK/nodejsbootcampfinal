@@ -1,7 +1,16 @@
 "use strict";
 let express = require('express'),
-router = express.Router();
+  path = require('path'),
+  fs = require('fs'),
+  router = express.Router();
 
-router.get("/:field/:searchValue", function(req, res){
+function urlManager() {
+  return function(req, res, next) {
+    let pages = require(path.join(__dirname, "../models/pages"));
+    let page = pages.getPageByUrl(req.path);
+    res.render(page.template,page);
+    // next();
+  }
+}
 
-});
+module.exports = urlManager;
