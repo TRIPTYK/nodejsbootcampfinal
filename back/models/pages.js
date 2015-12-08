@@ -32,25 +32,31 @@ function Pages(next) {
   }
 
   function findURLByUrl(urlStr) {
-    let urlArr = getPossibleUrl(urlStr);
-    let goodUrlIndex = null;
-    for (let i = 0, l = urlArr.length; i < l; i++) {
-      if (validUrl(urlArr[i])) {
-        console.log(`${urlArr[i]} : ok its good`);
-        goodUrlIndex = i
-        break;
-      }
-    }
+    let pageObj = null;
+    if (urlStr !== "/") {
+      let urlArr = getPossibleUrl(urlStr);
+      let goodUrlIndex = null;
 
-    let pageObj = _.find(pages, {
-      "url": urlArr[goodUrlIndex]
-    });
-    pageObj.params = getParams(urlArr[goodUrlIndex],urlArr[0]);
+      for (let i = 0, l = urlArr.length; i < l; i++) {
+        if (validUrl(urlArr[i])) {
+          goodUrlIndex = i
+          break;
+        }
+      }
+      pageObj = _.find(pages, {
+        "url": urlArr[goodUrlIndex]
+      });
+      pageObj.params = getParams(urlArr[goodUrlIndex], urlArr[0]);
+    } else {
+      pageObj = _.find(pages, {
+        "url": "/"
+      });
+    }
     return pageObj;
   }
 
-  function getParams(str1,str2){
-    let paramsArr=_.compact(str2.substr(str2.lastIndexOf(str1)+str1.length).split('/'));
+  function getParams(str1, str2) {
+    let paramsArr = _.compact(str2.substr(str2.lastIndexOf(str1) + str1.length).split('/'));
     return paramsArr;
   }
 
@@ -67,7 +73,7 @@ function Pages(next) {
 
   function getPageByUrl(url) {
     if (dataIsLoaded) {
-      return   findURLByUrl(url);
+      return findURLByUrl(url);
     } else {
       throw "Data is not loaded yet";
     }
