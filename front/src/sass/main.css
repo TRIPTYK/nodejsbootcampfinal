@@ -1,0 +1,46 @@
+/*@import "nav";*/
+body{
+  background-color: white;
+  margin: 0;
+  font-family: 'verdana',sans-serif;
+}
+#page{
+  width: 100%;
+  background-color: rgb(45, 161, 168);
+}
+#header{
+  padding: 10px;
+  height: 100px;
+}
+#header img{
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+}
+#menu{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+  float: right;
+}
+#menu ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+}
+#menu ul li{
+  display: inline-block;
+}
+#menu ul li:hover{
+  display: inline-block;
+  background-color: rgb(28, 100, 105);
+  color: white;
+}
+#menu ul li a{
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: black;
+}
