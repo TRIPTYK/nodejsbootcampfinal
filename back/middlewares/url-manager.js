@@ -7,23 +7,12 @@ let express = require('express'),
 function urlManager() {
   return function(req, res, next) {
     let pages = require(path.join(__dirname, "../models/pages"));
-    let completePath = req.path;
-
-    let pathBefore = completePath;
-  //  console.log(pathBefore);
     let page;
-    let urlValid = false;
 
-    page = pages.getPageByUrl(completePath);
-    if(page != undefined) urlValid = true;
+    page = pages.getPageByUrl(req.path);
 
-    while(urlValid == false){
-        pathBefore = path.dirname(pathBefore);
-        page = pages.getPageByUrl(pathBefore);
-        if(page != undefined) urlValid = true;
-    }
 
-    if(  pathBefore != "/" || completePath == "/" ) res.render(page.template,page);
+    if(page != undefined) res.render(page.template,page);
     else next();
 
   }

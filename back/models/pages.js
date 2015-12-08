@@ -29,10 +29,32 @@ function Pages(next) {
       let pageObj = _.find(pages,{
         "url": url
       });
-      return pageObj;
+      return validUrl(url);
     } else {
       throw "Data is not loaded yet";
     }
+  }
+
+  function validUrl(url){
+    let bool = false;
+    let pathBefore = url;
+    let pageObj = _.find(pages,{
+      "url": pathBefore
+    });
+
+    if(pageObj != undefined) bool = true;
+    while(bool == false){
+        pathBefore = path.dirname(pathBefore);
+        pageObj = _.find(pages,{
+          "url": pathBefore
+        });
+        if(pageObj != undefined) bool = true;
+    }
+
+    if(pathBefore == "/" && url != "/") bool = false;
+
+    if(bool) return pageObj;
+    else return undefined;
   }
 
   let that = {};
