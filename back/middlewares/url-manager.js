@@ -6,19 +6,10 @@ let express = require('express'),
 
 function urlManager() {
   return function(req, res, next) {
-    let pages = require(path.join(__dirname, "../models/pages"));
-    let temp = req.path.substring(1);
-    let pathBefore, pathAfter;
-    console.log(temp);
 
-    if(temp.indexOf("/") != -1){
-      pathBefore = "/" + temp.substring(0, temp.indexOf("/"));
-      pathAfter = temp.substring(temp.indexOf("/"));
-      console.log(pathBefore + "     " + pathAfter);
-    }else{
-      pathBefore = "/" + temp;
-    }
-    let page = pages.getPageByUrl(pathBefore);
+    let pages = require(path.join(__dirname, "../models/pages"));
+
+    let page = pages.getPageByUrl(req.url);
     res.render(page.template,page);
     // next();
   }
