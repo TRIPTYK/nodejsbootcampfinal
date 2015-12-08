@@ -1,34 +1,21 @@
 module.exports = function(grunt){
   grunt.initConfig({
     copy: {
-      public: {
+      views: {
         files:[{
           expend: true,
-          cwd: "src/",
-          src:["*.html"],
-          dest: "../back/public/pages/"
+          cwd: "src/views/pages",
+          src:["*.hbs"],
+          dest: "../back/views"
         }],
       },
     },
     uglify: {
       public: {
         files: {
-          'public/js/main.min.js': ['src/js/main.js']
+          '../back/public/js/main.min.js': ['src/js/main.js']
         },
       },
-    },
-    handlebarslayouts : {
-      public : {
-        files : {
-          'public/pages/*.html':'src/views/pages/*.hbs'
-        },
-        options : {
-          partials : [
-          'src/views/partials/*.hbs'
-        ],
-        context : "../back/datas/pages.json"
-        }
-      }
     },
     compass: {
       public:{
@@ -94,7 +81,7 @@ module.exports = function(grunt){
        },
        views: {
          files: ['src/views/**/**/*.hbs', 'src/views/**/**/*.json'],
-         tasks: ['handlebarslayouts']
+         tasks: ['copy:newer']
        }
      }
   });
@@ -107,8 +94,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks("grunt-handlebars-layouts");
 
   // Default task(s)
-  grunt.registerTask('default',["uglify:public", "newer:copy:public", "handlebarslayouts", "compass","imagemin","svgmin", "watch"]);
+  grunt.registerTask('default',["uglify:public", "newer:copy:views", "compass","imagemin","svgmin", "watch"]);
 };
