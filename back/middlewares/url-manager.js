@@ -8,10 +8,9 @@ function urlManager() {
   return function(req, res, next) {
 
     let pages = require(path.join(__dirname, "../models/pages"));
-
     let page = pages.getPageByUrl(req.url);
-    res.render(page.template,page);
-    // next();
+    if(page != undefined) res.render(page.template,page);
+    else next();
   }
 }
 

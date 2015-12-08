@@ -53,6 +53,28 @@ function Pages(next) {
     }
   }
 
+  function validUrl(url){
+    let bool = false;
+    let pathBefore = url;
+    let pageObj = _.find(pages,{
+      "url": pathBefore
+    });
+
+    if(pageObj != undefined) bool = true;
+    while(bool == false){
+        pathBefore = path.dirname(pathBefore);
+        pageObj = _.find(pages,{
+          "url": pathBefore
+        });
+        if(pageObj != undefined) bool = true;
+    }
+
+    if(pathBefore == "/" && url != "/") bool = false;
+
+    if(bool) return pageObj;
+    else return undefined;
+  }
+
   let that = {};
   that.getPageByUrl = getPageByUrl;
 
