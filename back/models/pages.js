@@ -1,4 +1,5 @@
 'use strict';
+
 let path = require('path');
 let fs = require('fs');
 let jsonFile = path.join(__dirname, '../datas/pages.json');
@@ -18,9 +19,15 @@ function Pages(next) {
   }
 
   function getPossibleUrl(urlStr) {
-    console.log("getPossibleUrl");
     let tempArr = urlStr.split("/");
-    return tempArr;
+    tempArr = _.compact(tempArr);
+    let urlArray=[];
+    for (let i = tempArr.length; i >0 ; i--) {
+      let tempUrl = "/"+tempArr.join("/");
+      urlArray.push(tempUrl);
+      tempArr.pop();
+    }
+    return urlArray;
   }
 
   function findURLByUrl(urlStr) {
@@ -28,6 +35,9 @@ function Pages(next) {
     let pageObj = _.find(pages, {
       "url": url
     });
+    if(!pageObj){
+
+    }
     return pageObj;
   }
 
