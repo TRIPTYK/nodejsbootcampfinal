@@ -50,8 +50,6 @@ function Pages(next) {
   }
 
   function getParams(str1,str2){
-    console.log(str2.substr(str2.lastIndexOf(str1)+str1.length));
-
     let paramsArr=_.compact(str2.substr(str2.lastIndexOf(str1)+str1.length).split('/'));
     return paramsArr;
   }
