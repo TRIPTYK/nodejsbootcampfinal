@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/css/style.css' />
+  {{#each css}}
+    <link rel='stylesheet' href={{link}} />
+  {{/each}}
   </head>
   <body>
     {{{body}}}
