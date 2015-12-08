@@ -7,9 +7,14 @@ let express = require('express'),
 function urlManager() {
   return function(req, res, next) {
     let pages = require(path.join(__dirname, "../models/pages"));
-    let page = pages.getPageByUrl(req.path);
-    res.render(page.template,page);
-    // next();
+    let page;
+
+    page = pages.getPageByUrl(req.path);
+
+
+    if(page != undefined) res.render(page.template,page);
+    else next();
+
   }
 }
 
