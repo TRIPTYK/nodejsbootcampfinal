@@ -1,13 +1,23 @@
 {
   "version": 0.1,
   "pages": [{
-    "url": "/recipes",
+    "url": "/",
     "css": [{
-      "link": "/path"
+      "link": "/css/style.css"
     }],
     "js": [{
       "link": "/path"
-    }]
+    }],
+    "template": "template1"
+  },{
+    "url": "/recipes",
+    "css": [{
+      "link": "/css/style.css"
+    }],
+    "js": [{
+      "link": "/path"
+    }],
+    "template": "template1"
   }, {
     "url": "/restaurants",
     "css": [{
