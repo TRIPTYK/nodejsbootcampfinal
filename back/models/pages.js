@@ -18,12 +18,13 @@ function Pages(next) {
     });
   }
 
+
   function getPossibleUrl(urlStr) {
     let tempArr = urlStr.split("/");
     tempArr = _.compact(tempArr);
-    let urlArray=[];
-    for (let i = tempArr.length; i >0 ; i--) {
-      let tempUrl = "/"+tempArr.join("/");
+    let urlArray = [];
+    for (let i = tempArr.length; i > 0; i--) {
+      let tempUrl = "/" + tempArr.join("/");
       urlArray.push(tempUrl);
       tempArr.pop();
     }
@@ -31,49 +32,50 @@ function Pages(next) {
   }
 
   function findURLByUrl(urlStr) {
-    console.log(getPossibleUrl(urlStr));
-    let pageObj = _.find(pages, {
-      "url": url
-    });
-    if(!pageObj){
-
+    let urlArr = getPossibleUrl(urlStr);
+    let goodUrlIndex = null;
+    for (let i = 0, l = urlArr.length; i < l; i++) {
+      if (validUrl(urlArr[i])) {
+        console.log(`${urlArr[i]} : ok its good`);
+        goodUrlIndex = i
+        break;
+      }
     }
+
+    let pageObj = _.find(pages, {
+      "url": urlArr[goodUrlIndex]
+    });
+    pageObj.params = getParams(urlArr[goodUrlIndex],urlArr[0]);
     return pageObj;
   }
 
+  function getParams(str1,str2){
+    console.log(str2.substr(str2.lastIndexOf(str1)+str1.length));
+
+    let paramsArr=_.compact(str2.substr(str2.lastIndexOf(str1)+str1.length).split('/'));
+    return paramsArr;
+  }
+
+  function validUrl(url) {
+    let isValidUrl = false;
+    let pageObj = _.find(pages, {
+      "url": url
+    });
+    (pageObj) ? isValidUrl = true: isValidUrl = false;
+    return isValidUrl;
+  }
 
   //PUBLIC
 
   function getPageByUrl(url) {
     if (dataIsLoaded) {
-      findURLByUrl(url);
-      return pageObj;
+      return   findURLByUrl(url);
     } else {
       throw "Data is not loaded yet";
     }
   }
 
-  function validUrl(url){
-    let bool = false;
-    let pathBefore = url;
-    let pageObj = _.find(pages,{
-      "url": pathBefore
-    });
 
-    if(pageObj != undefined) bool = true;
-    while(bool == false){
-        pathBefore = path.dirname(pathBefore);
-        pageObj = _.find(pages,{
-          "url": pathBefore
-        });
-        if(pageObj != undefined) bool = true;
-    }
-
-    if(pathBefore == "/" && url != "/") bool = false;
-
-    if(bool) return pageObj;
-    else return undefined;
-  }
 
   let that = {};
   that.getPageByUrl = getPageByUrl;
