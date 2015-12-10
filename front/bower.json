@@ -1,0 +1,31 @@
+{
+  "name": "panda",
+  "description": "Panda Food",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Panda Fou"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Panda",
+    "food"
+  ],
+  "homepage": "https://github.com/TRIPTYK/nodejsbootcampfinal",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "~2.2.7"
+  }
+}
