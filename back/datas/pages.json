@@ -18,10 +18,8 @@
     "title" : "HomePage"
   },
   {
-      "url": "/contak",
+      "url": "/contact",
       "css": [{
-        "link": "/css/main.css"
-      },{
         "link": "/css/normalize.css"
       },{
         "link": "/css/font-awesome/css/font-awesome.min.css"
@@ -31,7 +29,7 @@
       "js": [{
         "link": "/path"
       }],
-      "template": "contak",
+      "template": "contact",
       "title" : "Contak Page"
     }
 ]}
