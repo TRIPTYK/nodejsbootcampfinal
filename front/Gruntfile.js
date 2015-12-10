@@ -7,6 +7,11 @@ module.exports = function(grunt){
           cwd:'src/views/pages/',
           src:["**/*.hbs"],
           dest: "../back/views/"
+        }, {
+          expand: true,
+          cwd:'src/views/partials/',
+          src:["**/*.hbs"],
+          dest: "../back/views/partials/"          
         }],
       },
     },

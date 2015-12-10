@@ -60,6 +60,7 @@ function Pages(next) {
     return paramsArr;
   }
 
+
   function validUrl(url) {
     let isValidUrl = false;
     let pageObj = _.find(pages, {
