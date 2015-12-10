@@ -8,15 +8,12 @@ var urlManager = require('./middlewares/url-manager');
 var hbs = require('hbs');
 
 
-
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
-// hbs.registerPartial('menu', 'partials/menu');
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,6 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//STATIC ROUTES
+console.log(path.join(__dirname,'routes/formpost'))
+app.use('/formpost',require(path.join(__dirname,'routes/formpost')));
+
+//DYNAMIC ROUTES
 app.use(urlManager())
 
 
