@@ -46,7 +46,7 @@ function Pages(next) {
       pageObj = _.find(pages, {
         "url": urlArr[goodUrlIndex]
       });
-      pageObj.params = getParams(urlArr[goodUrlIndex], urlArr[0]);
+      if(  pageObj)pageObj.params = getParams(urlArr[goodUrlIndex], urlArr[0]);
     } else {
       pageObj = _.find(pages, {
         "url": "/"

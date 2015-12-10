@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET recipes page. */
-router.get('/formpost', function(req, res, next) {
-  console.log("broll");
+/*POST FORM*/
+router.post('/formpost', function(req, res, next) {
+  console.log("eeee");
   res.render('formpost');
-  next();
 
 });
 

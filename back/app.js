@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var urlManager = require('./middlewares/url-manager');
 var hbs = require('hbs');
-
+var formpost=require(path.join(__dirname,'routes/formpost'));
 
 var app = express();
 
@@ -23,13 +23,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//STATIC ROUTES
-console.log(path.join(__dirname,'routes/formpost'))
-app.use('/formpost',require(path.join(__dirname,'routes/formpost')));
 
 //DYNAMIC ROUTES
 app.use(urlManager())
 
+//STATIC ROUTES
+app.post('/formpost',formpost);
 
 
 // catch 404 and forward to error handler
