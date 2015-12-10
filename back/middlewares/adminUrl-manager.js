@@ -4,14 +4,25 @@ let express = require('express'),
   fs = require('fs'),
   router = express.Router();
 
-function urlManager() {
+function adminUrlManager() {
   return function(req, res, next) {
 
     let pages = require(path.join(__dirname, "../models/pages"));
-    let page = pages.getPageByUrl(req.url);
-    if(page != undefined) res.render(page.template,page);
-    else next();
+
+    router.post('/page', function(req,res){
+      let ob = req.body;
+      console.log(ob);
+      pages.setPages(ob, function(err) {
+        if (err) res.json(err.message);
+        res.json({"message": "insertion was a success"});
+      });
+    });
+
+
+    // let page = pages.getPageByUrl(req.url);
+    // if(page != undefined) res.render(page.template,page);
+    // else next();
   }
 }
 
-module.exports = urlManager;
+module.exports = adminUrlManager;
