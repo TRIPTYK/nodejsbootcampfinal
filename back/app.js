@@ -5,9 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var urlManager = require('./middlewares/url-manager');
+var adminUrlManager = require('./middlewares/adminUrl-manager');
 var hbs = require('hbs');
+var formpost=require(path.join(__dirname,'routes/formpost'));
 
-
+var admin = express();
 var app = express();
 
 // view engine setup
@@ -23,14 +25,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//STATIC ROUTES
-console.log(path.join(__dirname,'routes/formpost'))
-app.use('/formpost',require(path.join(__dirname,'routes/formpost')));
 
 //DYNAMIC ROUTES
 app.use(urlManager())
 
+//STATIC ROUTES
+app.post('/formpost',formpost);
+app.use('/admin', admin);
 
+
+admin.use(adminUrlManager());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
