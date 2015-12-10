@@ -3,31 +3,18 @@
   "pages": [{
     "url": "/",
     "css": [{
-      "link": "/css/style.css"
-    }],
-    "js": [{
-      "link": "/path"
-    }],
-    "template": "template1"
-  },{
-    "url": "/recipes",
-    "css": [{
-      "link": "/css/style.css"
-    }],
-    "js": [{
-      "link": "/path"
-    }],
-    "template": "template1"
-  }, {
-    "url": "/restaurants",
-    "css": [{
-      "link": "/css/style.css"
+      "link": "/css/main.css"
     },{
-      "link": "/css/style2.css"
+      "link": "/css/normalize.css"
+    },{
+      "link": "/css/font-awesome/css/font-awesome.min.css"
+    },{
+      "link": "https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
     }],
     "js": [{
       "link": "/path"
     }],
-    "template": "template1"
-  }]
+    "template": "homepage",
+    "title" : "HomePage"
+}]
 }
