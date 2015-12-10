@@ -30,7 +30,7 @@ function Pages(next) {
     }
     return urlArray;
   }
-
+  
   function findURLByUrl(urlStr) {
     let pageObj = null;
     if (urlStr !== "/") {
