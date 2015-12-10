@@ -12,7 +12,7 @@ function adminUrlManager() {
     router.post('/page', function(req,res){
       let ob = req.body;
       console.log(ob);
-      pages.setPages(ob, function(err) {
+      pages.createPage(ob, function(err) {
         if (err) res.json(err.message);
         res.json({"message": "insertion was a success"});
       });

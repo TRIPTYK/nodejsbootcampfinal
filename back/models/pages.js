@@ -69,7 +69,13 @@ function Pages(next) {
     (pageObj) ? isValidUrl = true: isValidUrl = false;
     return isValidUrl;
   }
+  function persistData(){
 
+  fs.writeFile('datas/pages.json',pages,function(err){
+    if (err) throw err;
+    console.log("data well saved");
+  })
+  }
   //PUBLIC
 
   function getPageByUrl(url) {
@@ -80,16 +86,31 @@ function Pages(next) {
     }
   }
 
-  function setPages(ob){
+  function createPage(ob){
   // TODO
-  // ouvrir et lire pages.json, ajoutter la nouvelle page au json
+  // ajoutter la nouvelle page au json
   // ajoutter dans views un nouveau template
+  pages.pages.push(
+    {
+      {
+        "url": ob.url,
+        "css": [{
+          "link": "/css/"+ob.css+".css"
+        }],
+        "js": [{
+          "link": "/js/"+ob.js+".js"
+        }],
+        "template": ob.template,
+        "title" : ob.title
+      }
+    }
+  );
+  persistData();
 }
-
 
   let that = {};
   that.getPageByUrl = getPageByUrl;
-  that.setPages = setPages;
+  that.createPage = createPage;
   initModel(jsonFile);
   return that;
 }
