@@ -13,14 +13,14 @@ module.exports = function(grunt){
     uglify: {
       public: {
         files: {
-          'public/js/main.min.js': ['src/js/main.js']
+          '../back/public/js/main.min.js': ['src/js/main.js']
         },
       },
     },
     handlebarslayouts : {
       public : {
         files : {
-          'public/pages/*.html':'src/views/pages/*.hbs'
+          '../back/public/pages/*.html':'src/views/pages/*.hbs'
         },
         options : {
           partials : [
