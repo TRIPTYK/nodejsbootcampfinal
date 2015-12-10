@@ -4,7 +4,7 @@ module.exports = function(grunt){
       views: {
         files:[{
           expand: true,
-          cwd:'src/views/pages/',
+          cwd:'src/views/',
           src:["**/*.hbs"],
           dest: "../back/views/"
         }],
