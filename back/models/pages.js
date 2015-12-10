@@ -36,6 +36,12 @@ function Pages(next) {
   }
 
   function validUrl(url){
+
+    console.log("split" + url.split("/"));
+
+
+
+
     let bool = false;
     let pathBefore = url;
     let pageObj = _.find(pages,{
