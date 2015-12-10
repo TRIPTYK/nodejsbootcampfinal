@@ -3,10 +3,10 @@ module.exports = function(grunt){
     copy: {
       views: {
         files:[{
-          expend: true,
-          cwd: "src/views/pages",
-          src:["*.hbs"],
-          dest: "../back/views"
+          expand: true,
+          cwd:'src/views/pages/',
+          src:["**/*.hbs"],
+          dest: "../back/views/"
         }],
       },
     },
@@ -33,7 +33,7 @@ module.exports = function(grunt){
           require: 'susy'
         },
         files: [{
-          expend: true,
+          expand: true,
           cwd: "src/sass",
           src:["*.scss"],
           dest: "../back/public/css/"
@@ -81,7 +81,7 @@ module.exports = function(grunt){
        },
        views: {
          files: ['src/views/**/**/*.hbs', 'src/views/**/**/*.json'],
-         tasks: ['copy:newer']
+         tasks: ['newer:copy']
        }
      }
   });
