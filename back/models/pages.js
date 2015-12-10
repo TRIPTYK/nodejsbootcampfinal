@@ -80,11 +80,16 @@ function Pages(next) {
     }
   }
 
+  function setPages(ob){
+  // TODO
+  // ouvrir et lire pages.json, ajoutter la nouvelle page au json
+  // ajoutter dans views un nouveau template
+}
 
 
   let that = {};
   that.getPageByUrl = getPageByUrl;
-
+  that.setPages = setPages;
   initModel(jsonFile);
   return that;
 }
