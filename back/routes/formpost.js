@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET recipes page. */
-router.get('/recipes', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/formpost', function(req, res, next) {
+  console.log("broll");
+  res.render('formpost');
+  next();
+
 });
 
 module.exports = router;
