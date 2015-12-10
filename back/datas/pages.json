@@ -16,5 +16,22 @@
     }],
     "template": "homepage",
     "title" : "HomePage"
-}]
-}
+  },
+  {
+      "url": "/contak",
+      "css": [{
+        "link": "/css/main.css"
+      },{
+        "link": "/css/normalize.css"
+      },{
+        "link": "/css/font-awesome/css/font-awesome.min.css"
+      },{
+        "link": "https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
+      }],
+      "js": [{
+        "link": "/path"
+      }],
+      "template": "contak",
+      "title" : "Contak Page"
+    }
+]}
