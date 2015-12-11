@@ -7,6 +7,7 @@ let _ = require('lodash');
 
 function Pages(next) {
   let pages = null;
+  let version = null;
   let dataIsLoaded = false;
 
   //PRIVATE
@@ -14,6 +15,8 @@ function Pages(next) {
     fs.readFile(jsonURL, function(err, data) {
       if (err) throw err;
       pages = JSON.parse(data).pages;
+      version = Number(JSON.parse(data).version);
+      console.log('Version page.json ' + version);
       dataIsLoaded = true;
     });
   }
@@ -71,8 +74,13 @@ function Pages(next) {
   }
 
   function persistData() {
+    version++;
+    let newJSON = {
+      "version" : version,
+      "pages" : pages
+    };
 
-    fs.writeFile('datas/pages.json', pages, function(err) {
+    fs.writeFile('datas/pages.json', newJSON, function(err) {
       if (err) throw err;
       console.log("data well saved");
     })
@@ -91,7 +99,7 @@ function Pages(next) {
     // TODO
     // ajoutter la nouvelle page au json
     // ajoutter dans views un nouveau template
-    pages.pages.push({
+    let newPage = {
         "url": ob.url,
         "css": [{
           "link": "/css/" + ob.css + ".css"
@@ -101,8 +109,13 @@ function Pages(next) {
         }],
         "template": ob.template,
         "title": ob.title
-    });
-    persistData();
+    };
+
+
+      console.log(JSON.stringify(pages));
+      pages.push(JSON.stringify(newPage));
+      console.log(JSON.stringify(pages));
+      persistData();
   }
 
   let that = {};

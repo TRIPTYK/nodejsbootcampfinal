@@ -47,7 +47,7 @@ admin.get('/page', function(req, res){
 
 admin.post('/page', function(req,res){
   let ob = req.body;
-  console.log(ob);
+
   pages.createPage(ob, function(err) {
     if (err) res.json(err.message);
     res.json({"message": "insertion was a success"});
