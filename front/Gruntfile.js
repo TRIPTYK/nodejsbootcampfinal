@@ -72,7 +72,14 @@ module.exports = function(grunt){
         }],
       },
     },
-    watch: {
+  clean: {
+    options: {
+      force :true
+      },
+    src : ["../back/views"]
+    },
+
+  watch: {
       options:{
         livereload: true
       },
@@ -99,7 +106,11 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task(s)
+grunt.registerTask('gitReady',["clean", "copy:views"]);
   grunt.registerTask('default',["uglify:public", "newer:copy:views", "compass","imagemin","svgmin", "watch"]);
+
+
 };
