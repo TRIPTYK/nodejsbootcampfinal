@@ -1,3 +1,4 @@
+"use strict";
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,9 +6,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var urlManager = require('./middlewares/url-manager');
-var adminUrlManager = require('./middlewares/adminUrl-manager');
 var hbs = require('hbs');
 var formpost=require(path.join(__dirname,'routes/formpost'));
+let pages = require(path.join(__dirname, "models/pages"));
 
 var admin = express();
 var app = express();
@@ -33,8 +34,26 @@ app.use(urlManager())
 app.post('/formpost',formpost);
 app.use('/admin', admin);
 
+admin.get('/', function(req, res){
+  // TODO verif si loggé sinon redirige sur /login
+  res.sendFile(path.join(__dirname,'adminViews/page.html'));
+});
+admin.get('/login', function(req, res){
+  res.sendFile(path.join(__dirname,'adminViews/login.html'));
+});
+admin.get('/page', function(req, res){
+  res.sendFile(path.join(__dirname,'adminViews/page.html'));
+});
 
-admin.use(adminUrlManager());
+admin.post('/page', function(req,res){
+  let ob = req.body;
+  console.log(ob);
+  pages.createPage(ob, function(err) {
+    if (err) res.json(err.message);
+    res.json({"message": "insertion was a success"});
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
