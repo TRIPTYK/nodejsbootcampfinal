@@ -1,60 +1,76 @@
 //SCSS
-@import "susy";
 @import "normalize";
-@import "../../bower_components/susy/sass/susy";
+@import "compass";
+@import "mixins";
+@import "footer";
+@import "nav";
+@import "susy";
+
+//@import "../../bower_components/susy/sass/susy";
 @include border-box-sizing;
-$susy: ( columns: 12, global-box-sizing: border-box );
+
+$susy: ( columns: 12, global-box-sizing: border-box);
 
 body {
-  background-color: red;
   margin: 0;
   padding: 0;
-  /*background: url("../img/fond-01.jpg") no-repeat center fixed;
-  background-size: cover;*/
-  @include container(100%);
+  font-size:16px;
+  font-family:"Century Gothic";
+  background: url("../img/fond-01.jpg") no-repeat center fixed;
+  background-size: cover;
+}
+
+#container-top {
+  @include container(64em);
 }
 
 header {
-  @include span(6);
+  @include container;
+  @include clearfix;
   height:198px;
-  background-color:green;
-  margin-left: span(3 of 12) + gutter(12);
-  margin-top: 130px;
-  padding:2%;
+  @include bgb;
+  border:2px solid white;
+  padding:1em;
+  margin-top: 10em;
 
    h1 {
-     @include span(4 of 6);
+     //@include span(isolate 6 of 12 at 2.5);
      font-family:'Shadows Into Light Two', cursive;
      color:white;
      font-size:5rem;
-   }
+     margin:0 auto;
+     width:70%;
 
-   #logo {
-     @include span(2 of 6 last);
-
-     img {
-       max-width:100%;
-       height:auto;
-       }
-     }
-}
-
-nav {
-  /*@include span(7);*/
-  ul {
-    list-style: none;
-    @include span(6);
-    li.lien-menu {
-      @include span(1 of 5);
-      &:last-child {
-        @include last;
+     span {
+       display: inline-block;
+       vertical-align: middle;
       }
-    }
-  }
-}
+       img {
+         max-width:21.5%;
+         height:auto;
+         display: inline-block;
+         vertical-align: middle;
+       }
+   }
+ }
+
   #horaires {
-    @include span(6);
-  }
-  footer {
-    @include span(12);
+    @include container(16em);
+    padding:1em 1em 0 1em;
+    @include bgb;
+    border:2px solid white;
+    color:white;
+
+      .horaire-ligne {
+        @include container;
+        @include clearfix;
+        margin-bottom:1em;
+
+      }
+    .horaire-jour {
+      @include span(2 of 4);
+    }
+    .horaire-heure {
+      @include span(2 of 4 last);
+    }
   }
