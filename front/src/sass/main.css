@@ -29,7 +29,7 @@ header h1 {
 
 nav {
   clear:both;
-  width:41%;
+  /*width:41%;*/
   margin: auto;
   margin-bottom:50px;
 }
