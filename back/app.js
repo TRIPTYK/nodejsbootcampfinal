@@ -9,7 +9,8 @@ var urlManager = require('./middlewares/url-manager');
 var hbs = require('hbs');
 var formpost=require(path.join(__dirname,'routes/formpost'));
 let pages = require(path.join(__dirname, "models/pages"));
-
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
 var admin = require('./routes/admin');
 var app = express();
 
@@ -23,7 +24,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
