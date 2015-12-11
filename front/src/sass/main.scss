@@ -2,3 +2,59 @@
 @import "susy";
 @import "normalize";
 @import "../../bower_components/susy/sass/susy";
+@include border-box-sizing;
+$susy: ( columns: 12, global-box-sizing: border-box );
+
+body {
+  background-color: red;
+  margin: 0;
+  padding: 0;
+  /*background: url("../img/fond-01.jpg") no-repeat center fixed;
+  background-size: cover;*/
+  @include container(100%);
+}
+
+header {
+  @include span(6);
+  height:198px;
+  background-color:green;
+  margin-left: span(3 of 12) + gutter(12);
+  margin-top: 130px;
+  padding:2%;
+
+   h1 {
+     @include span(4 of 6);
+     font-family:'Shadows Into Light Two', cursive;
+     color:white;
+     font-size:5rem;
+   }
+
+   #logo {
+     @include span(2 of 6 last);
+
+     img {
+       max-width:100%;
+       height:auto;
+       }
+     }
+}
+
+nav {
+  /*@include span(7);*/
+  ul {
+    list-style: none;
+    @include span(6);
+    li.lien-menu {
+      @include span(1 of 5);
+      &:last-child {
+        @include last;
+      }
+    }
+  }
+}
+  #horaires {
+    @include span(6);
+  }
+  footer {
+    @include span(12);
+  }
