@@ -34,7 +34,7 @@ app.post('/formpost',formpost);
 app.use('/admin', admin);
 
 
-admin.use(adminUrlManager());
+//admin.use(adminUrlManager());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
