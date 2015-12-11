@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var urlManager = require('./middlewares/url-manager');
 var hbs = require('hbs');
 var formpost=require(path.join(__dirname,'routes/formpost'));
+let pages = require(path.join(__dirname, "models/pages"));
 
 var admin = express();
 var app = express();
@@ -34,7 +35,14 @@ app.post('/formpost',formpost);
 app.use('/admin', admin);
 
 admin.get('/', function(req, res){
-  res.sendFile(path.join(__dirname,'adminViews/index.html'));
+  // TODO verif si loggé sinon redirige sur /login
+  res.sendFile(path.join(__dirname,'adminViews/page.html'));
+});
+admin.get('/login', function(req, res){
+  res.sendFile(path.join(__dirname,'adminViews/login.html'));
+});
+admin.get('/page', function(req, res){
+  res.sendFile(path.join(__dirname,'adminViews/page.html'));
 });
 
 admin.post('/page', function(req,res){

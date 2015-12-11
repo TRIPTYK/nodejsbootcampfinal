@@ -107,7 +107,7 @@ function Pages(next) {
 
   let that = {};
   that.getPageByUrl = getPageByUrl;
-  // that.createPage = createPage;
+  that.createPage = createPage;
   initModel(jsonFile);
   return that;
 }
