@@ -101,7 +101,6 @@ function Pages(next) {
         }],
         "template": ob.template,
         "title": ob.title
-
     });
     persistData();
   }
