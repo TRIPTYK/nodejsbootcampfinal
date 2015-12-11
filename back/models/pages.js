@@ -46,7 +46,7 @@ function Pages(next) {
       pageObj = _.find(pages, {
         "url": urlArr[goodUrlIndex]
       });
-      if(  pageObj)pageObj.params = getParams(urlArr[goodUrlIndex], urlArr[0]);
+      if (pageObj) pageObj.params = getParams(urlArr[goodUrlIndex], urlArr[0]);
     } else {
       pageObj = _.find(pages, {
         "url": "/"
@@ -69,12 +69,13 @@ function Pages(next) {
     (pageObj) ? isValidUrl = true: isValidUrl = false;
     return isValidUrl;
   }
-  function persistData(){
 
-  fs.writeFile('datas/pages.json',pages,function(err){
-    if (err) throw err;
-    console.log("data well saved");
-  })
+  function persistData() {
+
+    fs.writeFile('datas/pages.json', pages, function(err) {
+      if (err) throw err;
+      console.log("data well saved");
+    })
   }
   //PUBLIC
 
@@ -86,27 +87,25 @@ function Pages(next) {
     }
   }
 
-  function createPage(ob){
-  // TODO
-  // ajoutter la nouvelle page au json
-  // ajoutter dans views un nouveau template
-  pages.pages.push(
-    {
+  function createPage(ob) {
+    // TODO
+    // ajoutter la nouvelle page au json
+    // ajoutter dans views un nouveau template
+    pages.pages.push({
       {
         "url": ob.url,
         "css": [{
-          "link": "/css/"+ob.css+".css"
+          "link": "/css/" + ob.css + ".css"
         }],
         "js": [{
-          "link": "/js/"+ob.js+".js"
+          "link": "/js/" + ob.js + ".js"
         }],
         "template": ob.template,
-        "title" : ob.title
+        "title": ob.title
       }
-    }
-  );
-  persistData();
-}
+    });
+    persistData();
+  }
 
   let that = {};
   that.getPageByUrl = getPageByUrl;
