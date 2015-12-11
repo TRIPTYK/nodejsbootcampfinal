@@ -1,35 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../../sass/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="../../sass/contenu.css" />
-  <link rel="stylesheet" type="text/css" href="../../font-awesome/css/font-awesome.min.css" />
-  <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
-  <title>Panda Food - Restaurant asiatique</title>
-</head>
-<body>
-  <header>
-    <section id="logo">
-      <img src="../img/logo-vert-petit.png" width="105" height="115" alt="Logo de Panda Food"/>
-    </section>
-    <h1>PANDA FOOD</h1>
+{{> header_side}}
 
-  <nav>
-    <ul>
-      <li><a href="#">ACCUEIL</a></li>
-      <li><a href="#">NOS PLATS</a></li>
-      <li><a href="#">NOTRE RESTAURANT</a></li>
-      <li><a href="#">INFOS PRATIQUES</a></li>
-      <li><a href="#">CONTAK</a></li>
-    </ul>
-  </nav>
-</header>
+{{> menu}}
 
 <div id="container">
   <div class="photos-contenu">
     <section class="photos">
-      <img src="../img/panda-food-plats.jpg" width="" height="" alt="Soupe de Panda Food"/>
+      <img src="../img/panda-food-plats.jpg" alt="Soupe de Panda Food"/>
     </section>
     <section class="contenu">
       <p>Loin, très loin, au delà des monts Mots, à mille lieues des pays Voyellie et Consonnia,
@@ -55,13 +31,13 @@
         orthodoxographique.</p>
     </section>
     <section class="photos">
-      <img src="../img/panda-food-plats-02.jpg" width="" height="" alt="Soupe de Panda Food"/>
+      <img src="../img/panda-food-plats-02.jpg" alt="Soupe de Panda Food"/>
     </section>
   </div>
 
   <div class="photos-contenu">
     <section class="photos">
-      <img src="../img/panda-food-plats.jpg" width="" height="" alt="Soupe de Panda Food"/>
+      <img src="../img/panda-food-plats.jpg" alt="Soupe de Panda Food"/>
     </section>
     <section class="contenu">
       <p>Loin, très loin, au delà des monts Mots, à mille lieues des pays Voyellie et Consonnia,
@@ -77,5 +53,4 @@
 
 </div>
 
-</body>
-</html>
+{{> footer}}

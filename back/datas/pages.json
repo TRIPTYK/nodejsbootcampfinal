@@ -18,8 +18,10 @@
     "title" : "HomePage"
   },
   {
-      "url": "/contact",
+      "url": "/nos-plats",
       "css": [{
+        "link": "/css/main.css"
+      },{
         "link": "/css/normalize.css"
       },{
         "link": "/css/font-awesome/css/font-awesome.min.css"
@@ -29,7 +31,58 @@
       "js": [{
         "link": "/path"
       }],
-      "template": "contact",
-      "title" : "Contak Page"
-    }
+      "template": "nos-plats",
+      "title" : "Dishes Page"
+    },
+    {
+        "url": "/notre-restaurant",
+        "css": [{
+          "link": "/css/main.css"
+        },{
+          "link": "/css/normalize.css"
+        },{
+          "link": "/css/font-awesome/css/font-awesome.min.css"
+        },{
+          "link": "https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
+        }],
+        "js": [{
+          "link": "/path"
+        }],
+        "template": "notre-restaurant",
+        "title" : "Restaurant Page"
+      },
+      {
+          "url": "/infos-pratiques",
+          "css": [{
+            "link": "/css/main.css"
+          },{
+            "link": "/css/normalize.css"
+          },{
+            "link": "/css/font-awesome/css/font-awesome.min.css"
+          },{
+            "link": "https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
+          }],
+          "js": [{
+            "link": "/path"
+          }],
+          "template": "infos-pratiques",
+          "title" : "Information Page"
+        },
+    {
+        "url": "/contact",
+        "css": [{
+          "link": "/css/main.css"
+        },{
+          "link": "/css/normalize.css"
+        },{
+          "link": "/css/font-awesome/css/font-awesome.min.css"
+        },{
+          "link": "https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
+        }],
+        "js": [{
+          "link": "/path"
+        }],
+        "template": "contact",
+        "title" : "Contak Page"
+      }
 ]}
