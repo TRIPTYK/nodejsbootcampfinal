@@ -1,15 +1,30 @@
-#nav {
+nav {
+  margin-bottom:50px;
+
   ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      display: inline-block;
-      a {
-        display: block;
-        padding: 6px 12px;
-        text-decoration: none;
+  width:75.5%;
+  padding:0;
+  margin:2em auto;
+
+   li {
+    display: inline-block;
+     a {
+      font-family: 'Century Gothic';
+      padding:1em;
+      margin-right:1em;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid white;
+      color:white;
+      text-decoration: none;
+      display:block;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 1);
+          }
+        }
+      &:last-child a {
+        margin-right:0;
+        }
       }
     }
   }
-}
